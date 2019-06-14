@@ -31,21 +31,21 @@ export class CatchComponent implements OnInit {
 
   catch(pokemon: Pokemon) {
     let isCatch = chance.weighted([true, false], [1, 3]);
-    if (pokemon.id === 144 || pokemon.id === 145 || pokemon.id === 146 || pokemon.id === 150 || pokemon.id === 151){
+    if (pokemon.id === 144 || pokemon.id === 145 || pokemon.id === 146 || pokemon.id === 150 || pokemon.id === 151) {
       isCatch = chance.weighted([true, false], [1, 6]);
     }
-    if(isCatch){
+    if (isCatch) {
       console.log("capturado!");
       this.failed = 0;
       this.store.dispatch(new Catch(pokemon));
       this.pokeAPIService.getRandomPokemon()
-      .subscribe(pokemon => this.pokemon = pokemon);
-    } else{
+        .subscribe(pokemon => this.pokemon = pokemon);
+    } else {
       this.failed += 1;
       console.log("Lo siento :C!");
-      if(this.failed === 3){
+      if (this.failed === 3) {
         this.pokeAPIService.getRandomPokemon()
-      .subscribe(pokemon => this.pokemon = pokemon);
+          .subscribe(pokemon => this.pokemon = pokemon);
       }
     }
   }

@@ -22,6 +22,18 @@
 
   +background-image
 
+.catch-view__pokemon-name
+  display: inline-block
+
+  font-family: 'Pokemon'
+  text-transform: capitalize
+
+  padding: .5rem 1rem
+
+  background-color: $c-white
+  border-radius: 2px
+  border: 1px solid $c-gray-1
+
 .catch-view__actions
   text-align: center
 
@@ -30,26 +42,6 @@
   background-color: $c-white
   border-radius: 2px
   border: 1px solid $c-gray-1
-
-  button, a
-    display: block
-
-    font-family: 'Pokemon'
-    font-size: 16px
-    text-transform: capitalize
-    color: $c-black
-
-    padding: .5rem 1rem
-
-    background-color: $c-white
-    border: 1px solid $c-gray-1
-
-    cursor: pointer
-    transition: background-color .2s
-
-    &:hover
-      background-color: $c-gray-0
-
 
 .catch-view__pokemon-trainer-image
   $size: #{64px * 3}

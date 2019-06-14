@@ -1,11 +1,12 @@
-<h3> Bienvenido a tus Pokemons </h3>
-
-<div>
-  <div *ngFor="let pokemon of myPokemons | async">
-    <div class="pokemonName">
-      {{pokemon.name}}
+<div class="my-pokemons-view">
+  <div class="my-pokemons-view__box">
+    <div *ngFor="let pokemon of myPokemons | async">
+      <div class="pokemonName">
+        {{pokemon.name}}
+      </div>
+      <img src="{{ pokemon.imageURI }}">
     </div>
-    <img src="{{ pokemon.imageURI }}">
   </div>
-  <a routerLink="/catch">catch</a>
+
+  <a routerLink="/catch">Atrapar</a>
 </div>
