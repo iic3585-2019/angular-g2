@@ -19,12 +19,30 @@
 
   +background-image
 
-.catch-view__pokemon-image
-  $size: 96px
+.catch-view__pokemon-trainer-image
+  $size: #{64px * 3}
 
   position: absolute
-  top: calc(48% - #{$size / 2})
+  top: calc(100% - #{$size })
+  left: calc(40% - #{$size / 2})
+
+  width: $size
+  height: $size
+
+  img
+    width: $size
+    height: $size
+
+.catch-view__pokemon-image
+  $size: #{64px * 2}
+
+  position: absolute
+  top: calc(46% - #{$size / 2})
   left: calc(72% - #{$size / 2})
 
   width: $size
   height: $size
+
+  img
+    width: $size
+    height: $size
