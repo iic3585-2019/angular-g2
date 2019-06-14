@@ -1,6 +1,6 @@
 import { Pokemon } from './../../types/pokemon';
 
-export class AddPokemon {
-  static readonly type = '[Pokemon] Add Pokemon';
+export class Catch {
+  static readonly type = '[Pokemon[]] Catch';
   constructor(public pokemon: Pokemon) {}
 }

@@ -6,8 +6,8 @@ import { CatchComponent } from './components/catch/catch.component';
 // Components
 const routes: Routes = [
   { path: 'myPokemons', component: MyPokemonsComponent },
-  { path: '', redirectTo: '/myPokemons', pathMatch: 'full' },
   { path: 'catch', component: CatchComponent },
+  { path: '', redirectTo: '/catch', pathMatch: 'full' },
 ]
 
 
