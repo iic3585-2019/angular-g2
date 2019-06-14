@@ -1,0 +1,7 @@
+<p>
+  Pokemons {{ (myPokemons | async).name }}
+</p>
+
+<li *ngFor="let pokemon of myPokemons | async">
+  {{pokemon.name}}
+</li>
