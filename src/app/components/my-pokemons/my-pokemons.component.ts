@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Pokemon } from './../../types/pokemon';
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {Pokemon} from './../../types/pokemon';
+import { MyPokemons } from 'src/app/store/myPokemons/myPokemons.state';
 
 @Component({
   selector: 'app-my-pokemons',
@@ -9,9 +13,11 @@ import { Pokemon } from './../../types/pokemon';
 })
 export class MyPokemonsComponent implements OnInit {
 
-  myPokemons: Pokemon[];
+  @Select(MyPokemons.getMyPokemons) myPokemons: Observable<Pokemon[]>;
 
-  constructor() { }
+  constructor() { 
+    console.log(this.myPokemons);
+  }
 
   ngOnInit() {
   }

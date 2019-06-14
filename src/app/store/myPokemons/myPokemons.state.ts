@@ -3,8 +3,16 @@ import { Pokemon } from './../../types/pokemon';
 
 @State<Pokemon[]>({
   name: 'myPokemons',
-  defaults: [],
+  defaults: [{
+    id: 1,
+    name: 'asas',
+    imageURI: 'asas',
+  }],
 })
 
 export class MyPokemons {
+  @Selector()
+  static getMyPokemons(state: Pokemon[]) {
+    return state;
+  }
 }
