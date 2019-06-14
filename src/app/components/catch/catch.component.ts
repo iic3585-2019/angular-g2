@@ -20,6 +20,7 @@ const chance = Chance();
 })
 export class CatchComponent implements OnInit {
   pokemon: Pokemon | null = null
+  failed: number = 0;
 
   constructor(private pokeAPIService: PokeAPIService, private store: Store) { }
 
@@ -29,12 +30,23 @@ export class CatchComponent implements OnInit {
   }
 
   catch(pokemon: Pokemon) {
-    const isCatch = chance.integer({ min: 0, max: 1 });
+    let isCatch = chance.weighted([true, false], [1, 3]);
+    if (pokemon.id === 144 || pokemon.id === 145 || pokemon.id === 146 || pokemon.id === 150 || pokemon.id === 151){
+      isCatch = chance.weighted([true, false], [1, 6]);
+    }
     if(isCatch){
       console.log("capturado!");
+      this.failed = 0;
       this.store.dispatch(new Catch(pokemon));
+      this.pokeAPIService.getRandomPokemon()
+      .subscribe(pokemon => this.pokemon = pokemon);
     } else{
+      this.failed += 1;
       console.log("Lo siento :C!");
+      if(this.failed === 3){
+        this.pokeAPIService.getRandomPokemon()
+      .subscribe(pokemon => this.pokemon = pokemon);
+      }
     }
   }
 }
