@@ -3,10 +3,16 @@
     <div class="catch-view__box margin-b-0">
       <div class="catch-view__pokemon-name margin-t-0 margin-l-0">{{ pokemon.name }}</div>
 
-      <div class="catch-view__pokemon-image">
-        <img src="{{ pokemon.imageURI }}">
+      <div *ngIf="isValid;else other_content">
+          content here ...
+      </div>
 
-        <img src="/assets/images/pokeball.png">
+      
+      <div class="catch-view__pokemon-image">
+      <img src="/assets/images/pokeball.png" *ngIf="isCatching else wildPokemon">
+      <ng-template #wildPokemon>
+        <img src="{{ pokemon.imageURI }}">
+      </ng-template>
       </div>
 
       <div class="catch-view__pokemon-trainer-image">
@@ -15,7 +21,7 @@
     </div>
 
     <div class="catch-view__actions d-flex-r d-flex-j-sa">
-      <button (click)="catch(pokemon)">Atrapar</button>
+      <button (click)="startCatch(pokemon)">Atrapar</button>
 
       <a routerLink="/myPokemons">Mis Pokemones</a>
     </div>
