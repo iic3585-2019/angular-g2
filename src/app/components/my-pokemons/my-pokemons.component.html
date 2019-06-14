@@ -1,9 +1,10 @@
-<div class="my-pokemons-view">
-  <div class="my-pokemons-view__box">
-    <div *ngFor="let pokemon of myPokemons | async">
-      <div class="pokemonName">
-        {{pokemon.name}}
+<div class="my-pokemons-view d-flex-c d-flex-centered">
+  <div class="my-pokemons-view__box margin-b-0">
+    <div *ngFor="let pokemon of myPokemons | async" class="d-flex-r d-flex-a-c d-flex-j-sb h-padding-1">
+      <div class="my-pokemons-view__pokemon-name">
+        {{ pokemon.name }}
       </div>
+
       <img src="{{ pokemon.imageURI }}">
     </div>
   </div>
