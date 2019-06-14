@@ -1,5 +1,23 @@
+@import ~src/assets/stylesheets/lib/index
+@import ~src/assets/stylesheets/index
+
+.my-pokemons-view
+  position: relative
+  z-index: 1
+
+  width: 100vw
+  height: 100vh
+
+  +d-flex(center, center)
+
+.my-pokemons-view__box
+  width: 512px
+
+  background-color: $c-white
+  border-radius: 2px
+  border: 1px solid $c-gray-1
+
 .pokemonName
     width: 96px
     height: 18px
     text-align: center
-
