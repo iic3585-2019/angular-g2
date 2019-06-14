@@ -1,7 +1,10 @@
-<p>
-  Pokemons {{ (myPokemons | async).name }}
-</p>
+<h3> Bienvenido a tus Pokemons </h3>
 
-<li *ngFor="let pokemon of myPokemons | async">
-  {{pokemon.name}}
-</li>
+<div>
+  <div *ngFor="let pokemon of myPokemons | async">
+    <div class="pokemonName">
+      {{pokemon.name}}
+    </div>
+    <img src="{{ pokemon.imageURI }}">
+  </div>
+</div>
