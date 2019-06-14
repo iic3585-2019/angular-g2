@@ -4,19 +4,7 @@ import { Catch } from  './myPokemons.action';
 
 @State<Pokemon[]>({
   name: 'myPokemons',
-  defaults: 
-  [
-    {
-      id: 25,
-      name: 'pikachu',
-      imageURI: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-    },
-    {
-      id: 25,
-      name: 'pikachu',
-      imageURI: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-    },
-  ],
+  defaults: [],
 })
 
 export class MyPokemons {

@@ -10,6 +10,9 @@ import { Store } from '@ngxs/store';
 
 import { Catch } from './../../store/myPokemons/myPokemons.action';
 
+import Chance from 'chance';
+const chance = Chance();
+
 @Component({
   selector: 'app-catch',
   templateUrl: './catch.component.html',
@@ -17,7 +20,6 @@ import { Catch } from './../../store/myPokemons/myPokemons.action';
 })
 export class CatchComponent implements OnInit {
   pokemon: Pokemon | null = null
-  message: String = null
 
   constructor(private pokeAPIService: PokeAPIService, private store: Store) { }
 
@@ -27,6 +29,12 @@ export class CatchComponent implements OnInit {
   }
 
   catch(pokemon: Pokemon) {
-    this.store.dispatch(new Catch(pokemon));
+    const isCatch = chance.integer({ min: 0, max: 1 });
+    if(isCatch){
+      console.log("capturado!");
+      this.store.dispatch(new Catch(pokemon));
+    } else{
+      console.log("Lo siento :C!");
+    }
   }
 }
