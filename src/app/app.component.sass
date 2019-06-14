@@ -1,1 +1,10 @@
-@import ../assets/stylesheets/index
+@import ~src/assets/stylesheets/lib/index
+
+.app__background
+  background-image: url('/assets/images/background.jpg')
+
+  filter: grayscale(1)
+  opacity: .2
+
+  +background-image
+  +p-fixed(0, 0, 0, 0, 0)
