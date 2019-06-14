@@ -1,5 +1,13 @@
-<div *ngIf="pokemon">
-  <h2>{{ pokemon.name }}</h2>
+<div *ngIf="pokemon" class="catch-view">
+  <div class="catch-view__box">
+    <div class="catch-view__pokemon-name">{{ pokemon.name }}</div>
 
-  <img src="{{ pokemon.imageURI }}">
+    <div class="catch-view__pokemon-image">
+      <img src="{{ pokemon.imageURI }}">
+    </div>
+
+    <div class="catch-view__pokemon-trainer-image">
+      <img src="/assets/images/old-man.png">
+    </div>
+  </div>
 </div>

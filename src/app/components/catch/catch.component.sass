@@ -1,0 +1,48 @@
+@import ~src/assets/stylesheets/lib/index
+@import ~src/assets/stylesheets/index
+
+.catch-view
+  width: 100vw
+  height: 100vh
+
+  +d-flex(center, center)
+
+.catch-view__box
+  position: relative
+
+  width: 512px
+  height: 288px
+
+  background-image: url('/assets/images/battleground.png')
+  border-radius: 2px
+  border: 1px solid $c-gray-1
+
+  +background-image
+
+.catch-view__pokemon-trainer-image
+  $size: #{64px * 3}
+
+  position: absolute
+  top: calc(100% - #{$size })
+  left: calc(40% - #{$size / 2})
+
+  width: $size
+  height: $size
+
+  img
+    width: $size
+    height: $size
+
+.catch-view__pokemon-image
+  $size: #{64px * 2}
+
+  position: absolute
+  top: calc(46% - #{$size / 2})
+  left: calc(72% - #{$size / 2})
+
+  width: $size
+  height: $size
+
+  img
+    width: $size
+    height: $size
