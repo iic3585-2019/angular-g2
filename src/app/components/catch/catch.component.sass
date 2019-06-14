@@ -2,6 +2,9 @@
 @import ~src/assets/stylesheets/index
 
 .catch-view
+  position: relative
+  z-index: 1
+
   width: 100vw
   height: 100vh
 
@@ -18,6 +21,35 @@
   border: 1px solid $c-gray-1
 
   +background-image
+
+.catch-view__actions
+  text-align: center
+
+  padding: 1.5rem
+
+  background-color: $c-white
+  border-radius: 2px
+  border: 1px solid $c-gray-1
+
+  button, a
+    display: block
+
+    font-family: 'Pokemon'
+    font-size: 16px
+    text-transform: capitalize
+    color: $c-black
+
+    padding: .5rem 1rem
+
+    background-color: $c-white
+    border: 1px solid $c-gray-1
+
+    cursor: pointer
+    transition: background-color .2s
+
+    &:hover
+      background-color: $c-gray-0
+
 
 .catch-view__pokemon-trainer-image
   $size: #{64px * 3}

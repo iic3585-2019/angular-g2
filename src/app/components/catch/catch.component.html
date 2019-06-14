@@ -1,15 +1,23 @@
 <div *ngIf="pokemon" class="catch-view">
-  <div class="catch-view__box">
-    <div class="catch-view__pokemon-name">{{ pokemon.name }}</div>
+  <div>
+    <div class="catch-view__box margin-b-0">
+      <div class="catch-view__pokemon-name">{{ pokemon.name }}</div>
 
-    <div class="catch-view__pokemon-image">
-      <img src="{{ pokemon.imageURI }}">
+      <div class="catch-view__pokemon-image">
+        <img src="{{ pokemon.imageURI }}">
+
+        <img src="/assets/images/pokeball.png">
+      </div>
+
+      <div class="catch-view__pokemon-trainer-image">
+        <img src="/assets/images/old-man.png">
+      </div>
     </div>
 
-    <div class="catch-view__pokemon-trainer-image">
-      <img src="/assets/images/old-man.png">
+    <div class="catch-view__actions d-flex-r d-flex-j-sa">
+      <button (click)="catch(pokemon)">Atrapar</button>
+
+      <a routerLink="/myPokemons">Mis Pokemones</a>
     </div>
   </div>
-  <button (click)="catch(pokemon)">catch</button>
-  <a routerLink="/myPokemons">myPokemons</a>
 </div>
