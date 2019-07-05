@@ -1,27 +1,53 @@
-# AngularPokemonG2
+# Contexto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+Aplicación de angular centrada en aparición y captura de pokemon gracias a la API de pokemons, basicamente la aplicación comienza con la aparición de un pokemon salvaje y al hacerle click en catch aparecerá una pokeball, se espera un momento y en la consola del navegador aparecerá si el pokemon se capturo o no, tienes 3 intentos para capturarlo sino huirá y aparecera otro aleatoriamente.
 
-## Development server
+Además gracias al uso de la store de Angular se puede almacenar tus pokemons capturados y de esta forma se podrá ver un listado de ellos.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Partes interesantes
 
-## Code scaffolding
+Principalmente lo más interesante fue el uso de la store para lograr almacenar los pokemons capturados
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+En el siguiente codigo se observa que en el estado se almacenará un arreglo de Pokemon 
 
-## Build
+```
+import { Pokemon } from './../../types/pokemon';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+export class Catch {
+  static readonly type = '[Pokemon[]] Catch';
+  constructor(public pokemon: Pokemon) {}
+}
+```
+Acá se observa que el estado default de myPokemons es una arreglo vacío y se observan que posee un selector, que es principalmente para obtener el estado actual como se puede observar y una Action que es Catch que basicamente se obtiene el estado actual y se setea por un nuevo arreglo que contiene todo lo anterior mas un nuevo pokemon que se esta recibiendo.
 
-## Running unit tests
+```
+import { Selector, State, Action, StateContext } from '@ngxs/store';
+import { Pokemon } from './../../types/pokemon';
+import { Catch } from  './myPokemons.action';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@State<Pokemon[]>({
+  name: 'myPokemons',
+  defaults: [],
+})
 
-## Running end-to-end tests
+export class MyPokemons {
+  @Selector()
+  static getMyPokemons(state: Pokemon[]) {
+    return state;
+  }
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  @Action(Catch)
+  catch(ctx: StateContext<Pokemon[]>, { pokemon }: Catch) {
+    const state = ctx.getState();
+    ctx.setState([...state, pokemon]);
+  }
+}
+```
 
-## Further help
+Finalmente para ejecutar las Action en el componente de catch se utiliza un dispatch de la siguiente forma `this.store.dispatch(new Catch(pokemon));` dandole la action Catch que recibe el pokemon actual que se logro capturar
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Instalar las dependencias
+Se requiere instalar las dependencias con `npm install`
+
+# Para ejecutar
+Para ejecutar el codigo se necesita correr ` npm start` y finalmente se abrira la aplicacion en `http://localhost:4200/`
